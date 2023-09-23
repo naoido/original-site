@@ -1,0 +1,338 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+:root {
+  --white: #eaeff6;
+  --white-50: #eaeff666;
+  --black: #0c0c13;
+  --black-20: #0c0c1333;
+  --black-80: #0c0c13cc;
+  --blue: #6d91d2;
+  --green: #92fb99;
+  --red: #dc5666;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.width100vw {
+  width: 100vw !important;
+}
+
+.height100vh {
+  height: 100vh !important;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--black);
+}
+
+.video-box {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+.video-box #bg-video {
+  height: auto;
+  width: auto;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  opacity: 0.1;
+}
+
+nav {
+  position: absolute;
+  top: 0px;
+  background-color: var(--black-80);
+  width: 100vw;
+  z-index: 100;
+}
+nav ul {
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li {
+  margin: 0 20px;
+}
+nav ul li a {
+  text-decoration: none;
+  font-size: 30px;
+  font-family: serif;
+  color: var(--white);
+  letter-spacing: 3px;
+  padding: 0 10px;
+  transition: all 0.4s ease;
+}
+nav ul li a:hover {
+  opacity: 0.7;
+}
+
+#welcome-screen {
+  width: 100vw;
+  height: 100vh;
+}
+#welcome-screen .container {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+#welcome-screen .container .contents {
+  display: contents;
+}
+#welcome-screen .container .contents #icon {
+  position: absolute;
+  background-image: url("../assets/image/nazu_white.png");
+  background-position: center;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+  border-radius: 50px;
+}
+#welcome-screen .container .contents #icon.animated {
+  animation: open-animation 1.6s ease;
+  left: 20vw;
+}
+@keyframes open-animation {
+  0% {
+    left: 50vw;
+    transform: rotateZ(300deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+#welcome-screen .container .contents .introduce {
+  color: var(--white);
+  font-size: 4em;
+  letter-spacing: 10px;
+  font-family: serif;
+  opacity: 0;
+  border-bottom: solid 1px var(--white);
+  width: 100vw;
+  text-align: right;
+  padding-right: 200px;
+  padding-top: 50px;
+  transition: opacity 1s ease;
+  background-color: var(--black-20);
+}
+#welcome-screen .container .contents .introduce.animated {
+  opacity: 1;
+}
+#welcome-screen .container .icons {
+  display: flex;
+  background-color: var(--black-20);
+  list-style: none;
+  height: 100px;
+  width: 100vw;
+  top: 100px;
+}
+#welcome-screen .container .icons li {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#welcome-screen .container .icons a {
+  display: block;
+  background-position: center;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+#welcome-screen .container .icons a:hover {
+  opacity: 0.7;
+}
+#welcome-screen .container .icons .github {
+  background-image: url(../assets/image/GitHub-Mark-Light-32px.png);
+}
+#welcome-screen .container .icons .x {
+  background-image: url(../assets/image/x_logo_white.png);
+}
+
+h2.section-title {
+  margin-top: 100px;
+  margin-left: 100px;
+  letter-spacing: 4px;
+  color: var(--white);
+  font-style: italic;
+  font-family: serif;
+  font-size: 70px;
+}
+h2.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 100px;
+  height: 1px;
+  border-bottom: solid 1px var(--blue);
+  margin-right: 10px;
+  position: relative;
+  bottom: 25px;
+}
+
+#program {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100% - 100px);
+  background-color: var(--black-80);
+}
+#program::before, #program::after {
+  content: "";
+  position: relative;
+  top: -100px;
+  display: block;
+  width: 100vw;
+  height: 100px;
+  background-color: var(--black-80);
+  background: linear-gradient(transparent, var(--black-80));
+}
+#program::after {
+  top: 100px !important;
+  background: linear-gradient(var(--black-80), transparent);
+}
+#program .center-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#program .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 70px 0;
+  width: 70vw;
+  height: 500px;
+  border-bottom: solid 1px var(--white-50);
+}
+#program .container:nth-child(odd) {
+  flex-direction: row-reverse !important;
+}
+#program .container:nth-child(odd) .description {
+  margin-left: 150px;
+}
+#program .container:last-child {
+  border: 0 !important;
+}
+#program .container .description {
+  height: 100%;
+  width: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#program .container .description .program-name {
+  color: var(--white);
+  font-family: serif;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 4px;
+}
+#program .container .description .program-name::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 1px;
+  border-bottom: solid 1px var(--green);
+  margin-right: 10px;
+  position: relative;
+  bottom: 15px;
+}
+#program .container .description .use-languages {
+  margin-top: 15px;
+  margin-left: 100px;
+  list-style: none;
+}
+#program .container .description .use-languages li {
+  margin-top: 10px;
+}
+#program .container .description .use-languages li p.language {
+  color: var(--white);
+  font-size: 20px;
+  font-family: serif;
+  letter-spacing: 2px;
+}
+#program .container .description .use-languages li p.language::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 1px;
+  border-bottom: solid 1px var(--blue);
+  margin-right: 10px;
+  position: relative;
+  bottom: 7px;
+}
+#program .container .description .link-button {
+  margin-top: 80px;
+  position: relative;
+  margin-left: 100px;
+  bottom: 10px;
+  background-color: var(--red);
+  color: var(--white);
+  padding: 10px 20px;
+  right: 0;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  border: solid 1px var(--red);
+  transition: all 0.5s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  text-decoration: none;
+}
+#program .container .description .link-button:hover {
+  color: var(--red);
+  background-color: transparent;
+  border-radius: 0px;
+}
+#program .container .img-box {
+  margin-left: 30px;
+  width: 410px;
+}
+#program .container img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+#design {
+  width: 100vw;
+  height: 100vh;
+}
+
+footer {
+  height: 100px;
+  width: 100vw;
+  background-color: var(--black-80);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer p {
+  color: var(--white);
+  letter-spacing: 3px;
+}/*# sourceMappingURL=style.css.map */
