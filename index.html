@@ -40,7 +40,7 @@
         <div class="center-box">
             <div class="container">
                 <div class="description">
-                    <p class="program-name">とぅうぃとBot</p>
+                    <p class="program-name split fade-in">とぅうぃとBot</p>
                     <ul class="use-languages">
                         <li><p class="language">Kotlin</p></li>
                         <li><p class="language">MySQL</p></li>
@@ -49,14 +49,14 @@
                         Repository
                     </a>
                 </div>
-                <div class="img-box">
+                <div class="img-box fade-in">
                     <img src="./assets/image/twiwito.png" alt="とぅうぃとBot"/>
                 </div>
             </div>
 
             <div class="container">
                 <div class="description">
-                    <p class="program-name">My WebSite</p>
+                    <p class="program-name split fade-in">My WebSite</p>
                     <ul class="use-languages">
                         <li><p class="language">HTML</p></li>
                         <li><p class="language">SCSS</p></li>
@@ -66,14 +66,14 @@
                         Link
                     </a>
                 </div>
-                <div class="img-box">
+                <div class="img-box fade-in">
                     <img src="./assets/image/mysite.png" alt="My WebSite"/>
                 </div>
             </div>
 
             <div class="container">
                 <div class="description">
-                    <p class="program-name">VpnAccessNotifier</p>
+                    <p class="program-name split fade-in">VpnAccessNotifier</p>
                     <ul class="use-languages">
                         <li><p class="language">Lua</p></li>
                     </ul>
@@ -81,14 +81,14 @@
                         Repository
                     </a>
                 </div>
-                <div class="img-box">
+                <div class="img-box fade-in">
                     <img src="./assets/image/vpnaccessnotifier.png" alt="VpnAccessNotifier"/>
                 </div>
             </div>
 
             <div class="container">
                 <div class="description">
-                    <p class="program-name">Osu4j</p>
+                    <p class="program-name split fade-in">Osu4j</p>
                     <ul class="use-languages">
                         <li><p class="language">Java</p></li>
                     </ul>
@@ -96,7 +96,7 @@
                         Repository
                     </a>
                 </div>
-                <div class="img-box">
+                <div class="img-box fade-in">
                     <img src="./assets/image/osu4j.png" alt="osu4j"/>
                 </div>
             </div>
@@ -104,14 +104,37 @@
     </section>
     <section id="design">
         <h2 class="section-title split fade-in">Design</h2>
+        <div class="container">
+            <div class="box">
+
+            </div>
+        </div>
     </section>
     <!-- # footer # -->
     <footer>
         <p>©2023 naoido</p>
     </footer>
 
-    <!-- # split # -->
+
     <script>
+        //---   # scroll event #   ---//
+        document.addEventListener("scroll", (e) => {
+            veiwAnimation()
+        })
+
+        const veiwAnimation = () => {
+            height = window.innerHeight
+            scr = window.scrollY
+            document.querySelectorAll(".fade-in").forEach(d => {
+                clientRect = d.getBoundingClientRect();
+                docTop = clientRect.top + scr
+                if (scr > docTop - height) {
+                    d.classList.add("fade-in-start")
+                }
+            })
+        }
+
+        //---   # split #   ---//
         !function(){
             document.querySelectorAll(".split").forEach(d => {
                 inner = "";
@@ -120,13 +143,39 @@
                 })
                 d.innerHTML = inner
             })
+            veiwAnimation()
         }()
 
-        window.onload = () => {
-            document.querySelectorAll(".fade-in").forEach(d => {
-                d.classList.add("fade-in-start")
+        //---   # enlarge image #   ---//
+        !function() {
+            document.querySelectorAll("img").forEach(d => {
+                d.addEventListener("click", () => {
+                    newDiv = document.createElement("div")
+                    newDiv.classList.add("enlarge-box")
+
+                    newImg = document.createElement("img")
+                    newImg.src = d.src
+                    newImg.classList.add("enlarge")
+                    newDiv.appendChild(newImg)
+
+                    itv = setInterval(() => {
+                        newDiv.style.opacity = 1
+                        clearInterval(itv)
+                    }, 100)
+                    document.body.prepend(newDiv)
+
+                    // remove
+                    newDiv.addEventListener("click", () => {
+                        console.log("clock")
+                        newDiv.style.opacity = 0
+                        itv = setInterval(() => {
+                            newDiv.remove()
+                            clearInterval(itv)
+                        }, 400)
+                    })
+                })
             })
-        }
+        }()
     </script>
 </body>
 </html>
