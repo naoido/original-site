@@ -119,10 +119,10 @@
     <script>
         //---   # scroll event #   ---//
         document.addEventListener("scroll", (e) => {
-            veiwAnimation()
+            veiwInAnimation()
         })
 
-        const veiwAnimation = () => {
+        const veiwInAnimation = () => {
             height = window.innerHeight
             scr = window.scrollY
             document.querySelectorAll(".fade-in").forEach(d => {
@@ -143,7 +143,7 @@
                 })
                 d.innerHTML = inner
             })
-            veiwAnimation()
+            veiwInAnimation()
         }()
 
         //---   # enlarge image #   ---//
@@ -161,7 +161,7 @@
                     itv = setInterval(() => {
                         newDiv.style.opacity = 1
                         clearInterval(itv)
-                    }, 100)
+                    }, 1)
                     document.body.prepend(newDiv)
 
                     // remove
