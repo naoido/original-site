@@ -24,7 +24,7 @@
         <div class="container">
             <div class="contents">
                 <div id="icon" class="animated"></div>
-                <h2 class="introduce animated">My Portfolio</h2>
+                <h2 class="introduce animated split fade-in">My Portfolio</h2>
                 <div class="separator"></div>
                 <ul class="icons flex-center">
                     <li><a href="https://x.com/naoido" class="x" target="_blank" rel="noopener noreferrer"></a></li>
@@ -36,7 +36,7 @@
 
     <!-- # program section # -->
     <section id="program">
-        <h2 class="section-title">Program</h2>
+        <h2 class="section-title split fade-in">Program</h2>
         <div class="center-box">
             <div class="container">
                 <div class="description">
@@ -103,11 +103,30 @@
         </div>
     </section>
     <section id="design">
-
+        <h2 class="section-title split fade-in">Design</h2>
     </section>
     <!-- # footer # -->
     <footer>
         <p>©2023 naoido</p>
     </footer>
+
+    <!-- # split # -->
+    <script>
+        !function(){
+            document.querySelectorAll(".split").forEach(d => {
+                inner = "";
+                d.textContent.split("").forEach(s => {
+                    inner += `<span>${s}</span>`
+                })
+                d.innerHTML = inner
+            })
+        }()
+
+        window.onload = () => {
+            document.querySelectorAll(".fade-in").forEach(d => {
+                d.classList.add("fade-in-start")
+            })
+        }
+    </script>
 </body>
 </html>
