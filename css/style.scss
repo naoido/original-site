@@ -5,11 +5,16 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 //---   # Grobal var #   ---//
 :root {
     --white: #eaeff6;
     --white-50: #eaeff666;
+    --deep-black: #06060d;
     --black: #0c0c13;
     --black-20: #0c0c1333;
     --black-80: #0c0c13cc;
@@ -50,7 +55,7 @@
     opacity: 1;
 }
 
-@for $i from 0 through 20 {
+@for $i from 0 through 30 {
     .fade-in > span:nth-child(#{$i}) {
         transition-delay: 0.06s * $i;
     }
@@ -66,6 +71,10 @@
 
 
 //---   # Enlarge Element #   ---///
+img {
+    cursor: pointer;
+}
+
 .enlarge-box {
     display: flex;
     position: fixed;
@@ -129,7 +138,6 @@ nav {
         li {
             margin: 0 20px;
             a {
-                text-decoration: none;
                 font-size: 30px;
                 font-family: serif;
                 color: var(--white);
@@ -385,7 +393,6 @@ h2.section-title {
                 border: solid 1px var(--red);
                 transition: all 0.5s ease;
                 user-select: none;
-                text-decoration: none;
                 &:hover {
                     color: var(--red);
                     background-color: transparent;
@@ -406,11 +413,65 @@ h2.section-title {
     }
 }
 
+#design {
+    padding: 100px 0;
+    .video-container {
+        width: 100vw;
+        height: max-content;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        
+        .box {
+            margin: 50px;
+            p, a {
+                font-family: serif;
+                font-size: 13px;
+                letter-spacing: 3px;
+                color: var(--white);
+                text-align: center;
+                margin-top: 3px;
+                &.title {
+                    font-size: 17px;
+                    margin: 0 !important;
+                }
+            }
+            a {
+                margin-top: 10px;
+                display: block;
+                transition: all 0.4s ease;
+                color: var(--white);    
+                &:hover {
+                    opacity: 0.7;
+                    color: var(--blue);
+                }
+                &::before, &::after {
+                    content: "";
+                    display: inline-block;
+                    width: 5px;
+                    height: 1px;
+                    border-bottom: solid 1px var(--blue);
+                    margin-right: 10px;
+                    position: relative;
+                    bottom: 3px;
+                }
+                &::after {
+                    margin-right: 0 !important;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
 //---   # footer #   ---//
 footer {
     height: 100px;
     width: 100vw;
-    background-color: var(--black-80);
+    background-color: var(--deep-black);
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -104,9 +104,30 @@
     </section>
     <section id="design">
         <h2 class="section-title split fade-in">Design</h2>
-        <div class="container">
+        <div class="video-container">
             <div class="box">
-
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ewB-lG1FMVY?si=urvfJahFTdEBePDF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p class="split fade-in title">自主制作: 明晰夢MV</p>
+                <a class="split fade-in" href="https://www.nicovideo.jp/watch/sm36223107"  target="_blank" rel="noopener noreferrer">
+                    使用楽曲: 明晰夢 / 初音ミク - アオワイファイ
+                </a>
+                <p class="split fade-in">使用ソフト: AfterEffects</p>
+            </div>
+            <div class="box">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/D6tbw-wafTw?si=QIrxhpAkr6z2cmo8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p class="split fade-in title">第41回限界映像大会</p>
+                <a class="split fade-in" href="https://www.youtube.com/watch?v=RCySAU30PTQ"  target="_blank" rel="noopener noreferrer">
+                    使用楽曲: 空中分解 / すりぃ
+                </a>
+                <p class="split fade-in">使用ソフト: AviUtil</p>
+            </div>
+            <div class="box">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/LwZ6T90ZYxI?si=UBeEyVPGOiJjKjjn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p class="split fade-in title">自主制作: パノプティコン</p>
+                <a class="split fade-in" href="https://www.nicovideo.jp/watch/sm35553134"  target="_blank" rel="noopener noreferrer">
+                    使用楽曲: パノプティコン / r-906 / 初音ミク
+                </a>
+                <p class="split fade-in">使用ソフト: AfterEffects</p>
             </div>
         </div>
     </section>
@@ -114,7 +135,6 @@
     <footer>
         <p>©2023 naoido</p>
     </footer>
-
 
     <script>
         //---   # scroll event #   ---//
@@ -126,56 +146,17 @@
             height = window.innerHeight
             scr = window.scrollY
             document.querySelectorAll(".fade-in").forEach(d => {
-                clientRect = d.getBoundingClientRect();
+                if (d.classList.contains("fade-in-start")) return
+
+                clientRect = d.getBoundingClientRect()
                 docTop = clientRect.top + scr
                 if (scr > docTop - height) {
                     d.classList.add("fade-in-start")
                 }
             })
         }
-
-        //---   # split #   ---//
-        !function(){
-            document.querySelectorAll(".split").forEach(d => {
-                inner = "";
-                d.textContent.split("").forEach(s => {
-                    inner += `<span>${s}</span>`
-                })
-                d.innerHTML = inner
-            })
-            veiwInAnimation()
-        }()
-
-        //---   # enlarge image #   ---//
-        !function() {
-            document.querySelectorAll("img").forEach(d => {
-                d.addEventListener("click", () => {
-                    newDiv = document.createElement("div")
-                    newDiv.classList.add("enlarge-box")
-
-                    newImg = document.createElement("img")
-                    newImg.src = d.src
-                    newImg.classList.add("enlarge")
-                    newDiv.appendChild(newImg)
-
-                    itv = setInterval(() => {
-                        newDiv.style.opacity = 1
-                        clearInterval(itv)
-                    }, 1)
-                    document.body.prepend(newDiv)
-
-                    // remove
-                    newDiv.addEventListener("click", () => {
-                        console.log("clock")
-                        newDiv.style.opacity = 0
-                        itv = setInterval(() => {
-                            newDiv.remove()
-                            clearInterval(itv)
-                        }, 400)
-                    })
-                })
-            })
-        }()
     </script>
+    <script src="js/enlarge-image.js"></script>
+    <script src="js/split.js"></script>
 </body>
 </html>
