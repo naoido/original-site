@@ -4,9 +4,14 @@
             newDiv = document.createElement("div")
             newDiv.classList.add("enlarge-box")
 
+            newCloseButton = document.createElement("div")
+            newCloseButton.classList.add("close-button")
+
             newImg = document.createElement("img")
             newImg.src = d.src
             newImg.classList.add("enlarge")
+            
+            newDiv.appendChild(newCloseButton)
             newDiv.appendChild(newImg)
 
             itv = setInterval(() => {

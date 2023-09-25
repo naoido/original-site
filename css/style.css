@@ -199,6 +199,30 @@ img {
   transition: opacity 0.4s ease;
 }
 
+.close-button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 1001;
+  top: 20px;
+  right: 50px;
+}
+.close-button::before, .close-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background-color: var(--white);
+}
+.close-button::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.close-button::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 .enlarge {
   position: fixed;
   height: 70%;
@@ -526,7 +550,40 @@ h2.section-title::before {
 #design .video-container .box {
   margin: 50px;
 }
-#design .video-container .box p, #design .video-container .box a {
+#design .image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: -moz-max-content;
+  height: max-content;
+  margin-top: 100px;
+}
+#design .image-container .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+}
+#design .image-container .box .image-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 60%;
+}
+#design .image-container .box .image-box img {
+  margin: 0 10px;
+}
+#design .image-container .box img {
+  height: 50%;
+  max-height: 500px;
+  width: 70%;
+  margin-bottom: 10px;
+}
+#design p, #design a {
   font-family: serif;
   font-size: 13px;
   letter-spacing: 3px;
@@ -534,21 +591,22 @@ h2.section-title::before {
   text-align: center;
   margin-top: 3px;
 }
-#design .video-container .box p.title, #design .video-container .box a.title {
+#design p.title, #design a.title {
   font-size: 17px;
   margin: 0 !important;
 }
-#design .video-container .box a {
+#design a {
   margin-top: 10px;
   display: block;
+  text-decoration: underline;
   transition: all 0.4s ease;
   color: var(--white);
 }
-#design .video-container .box a:hover {
+#design a:hover {
   opacity: 0.7;
   color: var(--blue);
 }
-#design .video-container .box a::before, #design .video-container .box a::after {
+#design a::before, #design a::after {
   content: "";
   display: inline-block;
   width: 5px;
@@ -558,7 +616,7 @@ h2.section-title::before {
   position: relative;
   bottom: 3px;
 }
-#design .video-container .box a::after {
+#design a::after {
   margin-right: 0 !important;
   margin-left: 10px;
 }
