@@ -14,18 +14,16 @@
             newDiv.appendChild(newCloseButton)
             newDiv.appendChild(newImg)
 
-            itv = setInterval(() => {
+            setTimeout(() => {
                 newDiv.style.opacity = 1
-                clearInterval(itv)
             }, 1)
             document.body.prepend(newDiv)
 
             // remove
             newDiv.addEventListener("click", () => {
                 newDiv.style.opacity = 0
-                itv = setInterval(() => {
+                setTimeout(() => {
                     newDiv.remove()
-                    clearInterval(itv)
                 }, 400)
             })
         })
