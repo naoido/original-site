@@ -7,8 +7,8 @@
             newCloseButton = document.createElement("div")
             newCloseButton.classList.add("close-button")
 
-            newImg = document.createElement("img")
-            newImg.src = d.src
+            newImg = document.createElement("div")
+            newImg.style.backgroundImage = `url(${d.src})`
             newImg.classList.add("enlarge")
             
             newDiv.appendChild(newCloseButton)

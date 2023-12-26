@@ -5,10 +5,27 @@
     padding: 0;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 a {
     text-decoration: none;
 }
 
+//---   # Break Point #   ---//
+$breakpoints: (
+    tb: 960px,
+    sm: 560px
+) !default;
+
+@mixin media-query($bp) {
+    $bp: map-get($breakpoints, $bp);
+
+    @media screen and (max-width: $bp) {
+        @content;
+    }
+}
 
 //---   # Grobal var #   ---//
 :root {
@@ -86,6 +103,7 @@ img {
     background-color: var(--black-80);
     opacity: 0;
     transition: opacity 0.2s ease;
+    overflow: auto;
 }
 
 .close-button {
@@ -114,19 +132,19 @@ img {
 }
 
 .enlarge {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     position: fixed;
-    height: 70%;
-    width: auto;
+    width: 90vw;
+    height: 80vh;
 }
-@media screen and (orientation: landspace) {
-    .enlarge {
-        height: auto;
-        width: 70%;
-    }
-}
+
 //---   # BackGround #   ---//
-body {
+html{
     overflow-x: hidden;
+    width: 100vw;
     background-color: var(--black);
 }
 
@@ -162,6 +180,9 @@ nav {
         align-items: center;
         li {
             margin: 0 20px;
+            @include media-query(sm) {
+                margin: 0 5px;
+            }
             a {
                 font-size: 30px;
                 font-family: serif;
@@ -169,6 +190,10 @@ nav {
                 letter-spacing: 3px;
                 padding: 0 10px;
                 transition: all 0.4s ease;
+                @include media-query(sm) {
+                    font-size: 25px;
+                    letter-spacing: 2px;
+                }
                 &:hover {
                     opacity: 0.7;
                 }
@@ -209,6 +234,16 @@ nav {
             #icon.animated {
                 animation: open-animation 1.6s ease;
                 left: 20vw;
+                @include media-query(tb) {
+                    animation: none;
+                    left: 70px;
+                }
+                @include media-query(sm) {
+                    left: 0;
+                    margin-bottom: 130px;
+                    border-radius: 0 10px 10px 0;
+                    height: 90px;
+                }
             }
             @keyframes open-animation {
                 0% {
@@ -232,6 +267,9 @@ nav {
                 padding-top: 50px;
                 transition: opacity 1s ease;
                 background-color: var(--black-20);
+                @include media-query(tb) {
+                    padding-right: 10px;
+                }
             }
             .introduce.animated {
                 opacity: 1;
@@ -279,6 +317,10 @@ h2.section-title {
     font-style: italic;
     font-family: serif;
     font-size: 70px;
+    @include media-query(tb) {
+        margin-left: 30px;
+        font-size: 3em;
+    }
     &::before {
         content: "";
         display: inline-block;
@@ -288,6 +330,9 @@ h2.section-title {
         margin-right: 10px;
         position: relative;
         bottom: 25px;
+        @include media-query(tb) {
+            width: 20px;
+        }
     }
 }
 
@@ -331,6 +376,9 @@ h2.section-title {
         margin: 70px 0;
         width: 100vw;
         height: 500px;
+        @include media-query(tb) {
+            flex-direction: column-reverse !important;
+        }
 
         &::after {
             content: "";
@@ -341,23 +389,30 @@ h2.section-title {
             height: 1px;
             background-color: var(--white);
             background: linear-gradient(to right, transparent, var(--white) 5%, var(--white) 95%, transparent);
+            @include media-query(tb) {
+                width: 85vw;
+            }
         }
         &:last-child::after {
             content: none !important;
         }
         &:nth-child(odd) {
-            flex-direction: row-reverse !important;
+            flex-direction: row-reverse;
             .description {
                 margin-left: 150px;
             }
         }
         .description {
             height: 100%;
-            width: 560px;
+            width: max-content;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             flex-direction: column;
+            @include media-query(tb) {
+                align-items: center;
+                margin: 0 !important;
+            }
 
             .program-name {
                 color: var(--white);
@@ -365,6 +420,11 @@ h2.section-title {
                 font-weight: 800;
                 font-size: 30px;
                 letter-spacing: 4px;
+                @include media-query(tb) {
+                    font-size: 2.2em;
+                    text-align: center;
+                }
+
                 &::before {
                     content: "";
                     display: inline-block;
@@ -381,6 +441,10 @@ h2.section-title {
                 margin-top: 15px;
                 margin-left: 100px;
                 list-style: none;
+                width: 100%;
+                @include media-query(tb) {
+                    margin: 0 !important;
+                }
     
                 li {
                     margin-top: 10px;
@@ -389,6 +453,10 @@ h2.section-title {
                         font-size: 20px;
                         font-family: serif;
                         letter-spacing: 2px;
+                        @include media-query(tb) {
+                            font-size: 1.2em !important;
+                            text-align: left !important;
+                        }
                         &::before {
                             content: "";
                             display: inline-block;
@@ -418,6 +486,11 @@ h2.section-title {
                 border: solid 1px var(--red);
                 transition: all 0.5s ease;
                 user-select: none;
+                @include media-query(tb) {
+                    margin: 0;
+                    margin-top: 40px !important;
+                    right: 10px;
+                }
                 &:hover {
                     color: var(--red);
                     background-color: transparent;
@@ -428,7 +501,14 @@ h2.section-title {
 
         .img-box {
             margin-left: 30px;
+            overflow: visible;
             width: 410px;
+            @include media-query(tb) {
+                margin: 0;
+            }
+            @include media-query(sm) {
+                width: 90vw;
+            }
         }
         img {
             object-fit: contain;
@@ -476,6 +556,9 @@ h2.section-title {
                 width: 60%;
                 img {
                     margin: 0 10px;
+                    &:first-child {
+                        width: 70%;
+                    }
                 }
             }
             img {
@@ -483,7 +566,17 @@ h2.section-title {
                 max-height: 500px;
                 width: 70%;
                 margin-bottom: 10px;
+                &:first-child {
+                    @include media-query(sm) {
+                        width: 90vw;
+                    }
+                }
             }
+        }
+    }
+    iframe {
+        @include media-query(tb) {
+            max-width: 90vw;
         }
     }
 

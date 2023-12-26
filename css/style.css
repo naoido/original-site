@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 a {
   text-decoration: none;
 }
@@ -197,6 +201,7 @@ img {
   background-color: var(--black-80);
   opacity: 0;
   transition: opacity 0.2s ease;
+  overflow: auto;
 }
 
 .close-button {
@@ -225,19 +230,18 @@ img {
 }
 
 .enlarge {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   position: fixed;
-  height: 70%;
-  width: auto;
+  width: 90vw;
+  height: 80vh;
 }
 
-@media screen and (orientation: landspace) {
-  .enlarge {
-    height: auto;
-    width: 70%;
-  }
-}
-body {
+html {
   overflow-x: hidden;
+  width: 100vw;
   background-color: var(--black);
 }
 
@@ -275,6 +279,11 @@ nav ul {
 nav ul li {
   margin: 0 20px;
 }
+@media screen and (max-width: 560px) {
+  nav ul li {
+    margin: 0 5px;
+  }
+}
 nav ul li a {
   font-size: 30px;
   font-family: serif;
@@ -282,6 +291,12 @@ nav ul li a {
   letter-spacing: 3px;
   padding: 0 10px;
   transition: all 0.4s ease;
+}
+@media screen and (max-width: 560px) {
+  nav ul li a {
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
 }
 nav ul li a:hover {
   opacity: 0.7;
@@ -318,6 +333,20 @@ nav ul li a:hover {
   animation: open-animation 1.6s ease;
   left: 20vw;
 }
+@media screen and (max-width: 960px) {
+  #welcome-screen .container .contents #icon.animated {
+    animation: none;
+    left: 70px;
+  }
+}
+@media screen and (max-width: 560px) {
+  #welcome-screen .container .contents #icon.animated {
+    left: 0;
+    margin-bottom: 130px;
+    border-radius: 0 10px 10px 0;
+    height: 90px;
+  }
+}
 @keyframes open-animation {
   0% {
     left: 50vw;
@@ -339,6 +368,11 @@ nav ul li a:hover {
   padding-top: 50px;
   transition: opacity 1s ease;
   background-color: var(--black-20);
+}
+@media screen and (max-width: 960px) {
+  #welcome-screen .container .contents .introduce {
+    padding-right: 10px;
+  }
 }
 #welcome-screen .container .contents .introduce.animated {
   opacity: 1;
@@ -383,6 +417,12 @@ h2.section-title {
   font-family: serif;
   font-size: 70px;
 }
+@media screen and (max-width: 960px) {
+  h2.section-title {
+    margin-left: 30px;
+    font-size: 3em;
+  }
+}
 h2.section-title::before {
   content: "";
   display: inline-block;
@@ -392,6 +432,11 @@ h2.section-title::before {
   margin-right: 10px;
   position: relative;
   bottom: 25px;
+}
+@media screen and (max-width: 960px) {
+  h2.section-title::before {
+    width: 20px;
+  }
 }
 
 #program {
@@ -432,6 +477,11 @@ h2.section-title::before {
   width: 100vw;
   height: 500px;
 }
+@media screen and (max-width: 960px) {
+  #program .container {
+    flex-direction: column-reverse !important;
+  }
+}
 #program .container::after {
   content: "";
   position: absolute;
@@ -442,22 +492,34 @@ h2.section-title::before {
   background-color: var(--white);
   background: linear-gradient(to right, transparent, var(--white) 5%, var(--white) 95%, transparent);
 }
+@media screen and (max-width: 960px) {
+  #program .container::after {
+    width: 85vw;
+  }
+}
 #program .container:last-child::after {
   content: none !important;
 }
 #program .container:nth-child(odd) {
-  flex-direction: row-reverse !important;
+  flex-direction: row-reverse;
 }
 #program .container:nth-child(odd) .description {
   margin-left: 150px;
 }
 #program .container .description {
   height: 100%;
-  width: 560px;
+  width: -moz-max-content;
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+}
+@media screen and (max-width: 960px) {
+  #program .container .description {
+    align-items: center;
+    margin: 0 !important;
+  }
 }
 #program .container .description .program-name {
   color: var(--white);
@@ -465,6 +527,12 @@ h2.section-title::before {
   font-weight: 800;
   font-size: 30px;
   letter-spacing: 4px;
+}
+@media screen and (max-width: 960px) {
+  #program .container .description .program-name {
+    font-size: 2.2em;
+    text-align: center;
+  }
 }
 #program .container .description .program-name::before {
   content: "";
@@ -480,6 +548,12 @@ h2.section-title::before {
   margin-top: 15px;
   margin-left: 100px;
   list-style: none;
+  width: 100%;
+}
+@media screen and (max-width: 960px) {
+  #program .container .description .use-languages {
+    margin: 0 !important;
+  }
 }
 #program .container .description .use-languages li {
   margin-top: 10px;
@@ -489,6 +563,12 @@ h2.section-title::before {
   font-size: 20px;
   font-family: serif;
   letter-spacing: 2px;
+}
+@media screen and (max-width: 960px) {
+  #program .container .description .use-languages li p.language {
+    font-size: 1.2em !important;
+    text-align: left !important;
+  }
 }
 #program .container .description .use-languages li p.language::before {
   content: "";
@@ -518,6 +598,13 @@ h2.section-title::before {
      -moz-user-select: none;
           user-select: none;
 }
+@media screen and (max-width: 960px) {
+  #program .container .description .link-button {
+    margin: 0;
+    margin-top: 40px !important;
+    right: 10px;
+  }
+}
 #program .container .description .link-button:hover {
   color: var(--red);
   background-color: transparent;
@@ -525,7 +612,18 @@ h2.section-title::before {
 }
 #program .container .img-box {
   margin-left: 30px;
+  overflow: visible;
   width: 410px;
+}
+@media screen and (max-width: 960px) {
+  #program .container .img-box {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 560px) {
+  #program .container .img-box {
+    width: 90vw;
+  }
 }
 #program .container img {
   -o-object-fit: contain;
@@ -578,11 +676,24 @@ h2.section-title::before {
 #design .image-container .box .image-box img {
   margin: 0 10px;
 }
+#design .image-container .box .image-box img:first-child {
+  width: 70%;
+}
 #design .image-container .box img {
   height: 50%;
   max-height: 500px;
   width: 70%;
   margin-bottom: 10px;
+}
+@media screen and (max-width: 560px) {
+  #design .image-container .box img:first-child {
+    width: 90vw;
+  }
+}
+@media screen and (max-width: 960px) {
+  #design iframe {
+    max-width: 90vw;
+  }
 }
 #design p, #design a {
   font-family: serif;
