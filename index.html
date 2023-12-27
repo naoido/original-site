@@ -39,6 +39,12 @@
                 </ul>
             </div>
         </div>
+        <div class="bg-video-switch">
+            <p>背景動画</p>
+            <input type="checkbox" name="bg-video" id="bg-video-sw" onchange="viewBackgroundVideo()">
+            <label for="bg-video-sw"></label>
+            <div class="circle"></div>
+        </div>
     </section>
 
     <!-- # program section # -->
@@ -180,7 +186,7 @@
     </script>
     <script>
         const viewBackgroundVideo = () => {
-            if (document.getElementById("bg-video")) {
+            if (!!document.getElementById("bg-video")) {
                 document.getElementById("bg-video").remove();
             } else {
                 // <video src="/assets/video/bg-video.mp4" autoplay muted loop playsinline id="bg-video"></video>
@@ -199,6 +205,8 @@
         !function() {
             if(!navigator.userAgent.match(/iPhone|Android.+Mobile/)){
                 viewBackgroundVideo();
+            } else {
+                document.getElementById("bg-video-sw").checked = true;
             }
         }();
     </script>
