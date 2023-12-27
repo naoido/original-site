@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns#">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="og:url" content="https://www.naoido.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ポートフォリオをまとめたサイトです。">
+    <meta name="og:title" content="Portfolio | Naoido">
+    <meta name="og:description" content="ポートフォリオをまとめたサイトです。">
+    <meta name="og:type" content="website">
     <title> Portfolio | Naoido </title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- # background video # -->
     <div class="video-box">
-        <video src="/assets/video/bg-video.mp4" autoplay muted loop playsinline id="bg-video"></video>
     </div>
 
     <!-- # navigation # -->
     <nav>
         <ul>
             <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="mailto:contact@naoido.com">Contact</a></li>
             <li><a href="">Other</a></li>
         </ul>
     </nav>
@@ -26,7 +31,7 @@
         <div class="container">
             <div class="contents">
                 <div id="icon" class="animated"></div>
-                <h2 class="introduce animated split fade-in">My Portfolio</h2>
+                <h2 class="introduce animated split fade-in" id="title">My Portfolio</h2>
                 <div class="separator"></div>
                 <ul class="icons flex-center">
                     <li><a href="https://x.com/naoido" class="x" target="_blank" rel="noopener noreferrer"></a></li>
@@ -38,7 +43,7 @@
 
     <!-- # program section # -->
     <section id="program">
-        <h2 class="section-title split fade-in">Program</h2>
+        <h2 class="section-title split fade-in" id="program-title">Program</h2>
         <div class="center-box">
             <div class="container">
                 <div class="description">
@@ -105,7 +110,7 @@
         </div>
     </section>
     <section id="design">
-        <h2 class="section-title split fade-in">Design</h2>
+        <h2 class="section-title split fade-in" id="design-title">Design</h2>
         <div class="video-container">
             <div class="box">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/ewB-lG1FMVY?si=urvfJahFTdEBePDF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -172,6 +177,30 @@
                 }
             })
         }
+    </script>
+    <script>
+        const viewBackgroundVideo = () => {
+            if (document.getElementById("bg-video")) {
+                document.getElementById("bg-video").remove();
+            } else {
+                // <video src="/assets/video/bg-video.mp4" autoplay muted loop playsinline id="bg-video"></video>
+                const video = document.createElement("video");
+                video.id = "bg-video";
+                video.src = "/assets/video/bg-video.mp4";
+                video.setAttribute("autoplay", "");
+                video.setAttribute("muted", "");
+                video.setAttribute("loop", "");
+                video.setAttribute("playsinline", "");
+
+                document.querySelector(".video-box").appendChild(video);
+            }
+        }
+
+        !function() {
+            if(!navigator.userAgent.match(/iPhone|Android.+Mobile/)){
+                viewBackgroundVideo();
+            }
+        }();
     </script>
     <script src="js/enlarge-image.js"></script>
     <script src="js/split.js"></script>

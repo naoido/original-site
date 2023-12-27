@@ -316,6 +316,11 @@ nav ul li a:hover {
   position: relative;
   overflow-x: hidden;
 }
+@media screen and (max-width: 960px) {
+  #welcome-screen .container {
+    align-items: end;
+  }
+}
 #welcome-screen .container .contents {
   display: contents;
 }
@@ -342,9 +347,9 @@ nav ul li a:hover {
 @media screen and (max-width: 560px) {
   #welcome-screen .container .contents #icon.animated {
     left: 0;
-    margin-bottom: 130px;
-    border-radius: 0 10px 10px 0;
-    height: 90px;
+    border-radius: 0 0 10px 0;
+    height: 70px;
+    width: 70px;
   }
 }
 @keyframes open-animation {
@@ -372,6 +377,16 @@ nav ul li a:hover {
 @media screen and (max-width: 960px) {
   #welcome-screen .container .contents .introduce {
     padding-right: 10px;
+    font-size: 3em;
+    overflow-wrap: break-word;
+    width: -moz-min-content;
+    width: min-content;
+    padding-left: 100%;
+  }
+}
+@media screen and (max-width: 560px) {
+  #welcome-screen .container .contents .introduce {
+    font-size: 2.6em;
   }
 }
 #welcome-screen .container .contents .introduce.animated {

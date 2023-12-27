@@ -217,6 +217,9 @@ nav {
         flex-direction: column;
         position: relative;
         overflow-x: hidden;
+        @include media-query(tb) {
+            align-items: end;
+        }
         
         .contents {
             display: contents;
@@ -240,9 +243,9 @@ nav {
                 }
                 @include media-query(sm) {
                     left: 0;
-                    margin-bottom: 130px;
-                    border-radius: 0 10px 10px 0;
-                    height: 90px;
+                    border-radius: 0 0 10px 0;
+                    height: 70px;
+                    width: 70px;
                 }
             }
             @keyframes open-animation {
@@ -269,6 +272,13 @@ nav {
                 background-color: var(--black-20);
                 @include media-query(tb) {
                     padding-right: 10px;
+                    font-size: 3em;
+                    overflow-wrap: break-word;
+                    width: min-content;
+                    padding-left: 100%;
+                }
+                @include media-query(sm) {
+                    font-size: 2.6em;
                 }
             }
             .introduce.animated {
